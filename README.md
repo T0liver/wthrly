@@ -1,2 +1,3 @@
-# wtrly
-A weather app build in react + vite for BMEVIAUAC17 course.
+# Wtrly
+
+A weather app build in react + vite with a nice UI.
