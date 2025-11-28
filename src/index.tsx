@@ -5,7 +5,7 @@ import Location from "./components/Location";
 import Header from "./components/Header";
 
 function App() {
-    return <div>
+    return <div className="app-container">
             <Header />
             <Location name="Budapest" />
             <Card day="Tmrrw" tempC={10.5}  />

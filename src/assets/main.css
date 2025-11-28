@@ -4,3 +4,13 @@ body {
     font-family: 'Caveat Brush', cursive;
     background-color: #a5d8ff;
 }
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    gap: 20px;
+}
