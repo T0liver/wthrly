@@ -23,7 +23,7 @@ function Location({ name: initialName }: { name?: string }) {
 
 	return (
 		<div className="location-container">
-			<Icon name="air" size={30} />
+			<Icon name="location-pin" size={30} />
 			<input
 				ref={inputRef}
 				type="text"
@@ -31,7 +31,7 @@ function Location({ name: initialName }: { name?: string }) {
 				value={name}
 				onChange={handleInputChange}
 				onKeyDown={handleKeyDown}
-				placeholder="Search for a city"
+				placeholder="search for a city"
 			/>
 		</div>
 	);
