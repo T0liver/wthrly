@@ -8,6 +8,7 @@ import AirConditions from "./components/AirConditions";
 import Footer from "./components/Footer";
 import DaysForecast from "./components/DaysForecast";
 import { getWeatherData, UIData } from "./services/weatherService";
+import Loading from "./components/Loading";
 
 function App() {
     const location = "Budapest";
@@ -18,7 +19,7 @@ function App() {
     }, [location]);
 
     if (!currentWeather) {
-        return <div>Loading...</div>;
+        return <Loading />;
     }
 
     return <div className="app-container">
