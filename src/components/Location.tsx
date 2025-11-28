@@ -35,7 +35,7 @@ function Location({ name: initialName }: { name?: string }) {
 				value={name}
 				onChange={handleInputChange}
 				onKeyDown={handleKeyDown}
-				placeholder="search for a city"
+				placeholder="search location"
 			/>
 		</div>
 	);
