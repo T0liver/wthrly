@@ -12,3 +12,9 @@ body {
     justify-content: center;
     gap: 20px;
 }
+
+.air-conditions-wrapper {
+    width: 100%;
+    padding-left: 20%;
+    box-sizing: border-box;
+}

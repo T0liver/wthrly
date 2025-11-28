@@ -1,0 +1,28 @@
+.air-conditions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20pt;
+    font-weight: 300;
+    padding-top: 50px;
+}
+
+.air-condition-header {
+    font-size: 24pt;
+    padding-bottom: 20px;
+}
+
+.air-condition-item {
+    display: flex;
+    align-items: center;
+}
+
+.air-condition-item-label-container {
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.air-condition-label {
+    padding: 0 15px;
+}

@@ -4,6 +4,7 @@ import Card from "./components/Card";
 import Location from "./components/Location";
 import Header from "./components/Header";
 import Temperature from "./components/Temperature";
+import AirConditions from "./components/AirConditions";
 
 function App() {
     return <div className="app-container">
@@ -11,6 +12,9 @@ function App() {
             <Location name="Budapest" />
             <Temperature value={22} />
             <Card day="Tmrrw" tempC={10.5}  />
+            <div className="air-conditions-wrapper">
+                <AirConditions realFeel={20} wind={5} clouds={75} humidity={60} />
+            </div>
         </div>;
 }
 
