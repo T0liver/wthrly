@@ -1,17 +1,21 @@
 import { useState, useRef } from "react";
 import "../assets/location.css";
 import Icon from "./Icon";
+import { useWeather } from "../context/WeatherContext";
 
 function Location({ name: initialName }: { name?: string }) {
 	const [name, setName] = useState(initialName);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const { fetchWeatherData } = useWeather();
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setName(event.currentTarget.value);
 	};
 
 	const handleSearch = () => {
-		// Later will call something
+		if (name) {
+			fetchWeatherData(name);
+		}
 	};
 
 	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
