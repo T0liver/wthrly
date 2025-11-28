@@ -1,0 +1,25 @@
+.temperature-container {
+    display: flexbox;
+    justify-items: center;
+}
+
+.temperature-value {
+    font-size: 70pt;
+    font-weight: 500;
+}
+
+.temperature-unit {
+    font-size: 36pt;
+    font-weight: 400;
+}
+
+.radCtemp-value {
+    font-size: 24pt;
+    font-weight: 400;
+}
+
+.radCtemp-unit {
+    font-size: 18pt;
+    font-weight: 400;
+    padding-left: 10px;
+}
