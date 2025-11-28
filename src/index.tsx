@@ -5,6 +5,7 @@ import Location from "./components/Location";
 import Header from "./components/Header";
 import Temperature from "./components/Temperature";
 import AirConditions from "./components/AirConditions";
+import Footer from "./components/Footer";
 
 function App() {
     return <div className="app-container">
@@ -15,6 +16,7 @@ function App() {
             <div className="air-conditions-wrapper">
                 <AirConditions realFeel={20} wind={5} clouds={75} humidity={60} />
             </div>
+            <Footer />
         </div>;
 }
 
