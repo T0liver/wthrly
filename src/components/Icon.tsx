@@ -1,4 +1,8 @@
-function Icon({ name = "cloud", size = 100 }: { name?: string; size?: number }) {
+import { getWeatherIcon } from "../utils/weatherIcon";
+
+function Icon({ name, wIcon, size }: { name?: string; wIcon?: string; size?: number }) {
+	const wGIcon = getWeatherIcon(wIcon);
+	name = wIcon ? wGIcon : name ? name : "sun";
 	return (
 		<img
 			src={`/icons/icons8-${name}.png`}

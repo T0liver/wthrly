@@ -20,7 +20,7 @@ function WeatherApp() {
 		<div className="app-container">
 			<Header />
 			<Location name={weatherData.name} />
-			<Temperature value={weatherData.temp} />
+			<Temperature value={weatherData.temp} icon={weatherData?.weather_icon} />
 			<DaysForecast />
 			<div className="air-conditions-wrapper">
 				<AirConditions
