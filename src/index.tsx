@@ -10,7 +10,7 @@ import Loading from "./components/Loading";
 import { WeatherProvider, useWeather } from "./context/WeatherContext";
 
 function WeatherApp() {
-	const { weatherData, isLoading } = useWeather();
+	const { weatherData, isLoading, error } = useWeather();
 
 	if (isLoading || !weatherData) {
 		return <Loading />;
@@ -31,6 +31,7 @@ function WeatherApp() {
 				/>
 			</div>
 			<Footer />
+            {error && <div className="error-popup">{error}</div>}
 		</div>
 	);
 }
