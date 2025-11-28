@@ -6,7 +6,6 @@ import { CSSProperties } from "preact";
 interface CardProps {
 	day?: string;
 	tempC: number;
-	radC?: number;
 	icon?: string;
 	locale?: string;
 	className?: string;

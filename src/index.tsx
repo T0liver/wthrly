@@ -5,7 +5,7 @@ import Card from "./components/Card";
 function App() {
     return <div>
             <h1>Hello, Vite + React!</h1>
-            <Card day="Tmrrw" tempC={10.5} radC={0.1507} />
+            <Card day="Tmrrw" tempC={10.5}  />
         </div>;
 }
 
