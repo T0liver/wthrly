@@ -1,5 +1,5 @@
 import "../assets/temperature.css";
-import { gradToRad } from "../utils/Numbers";
+import { gradToRad } from "../utils/numbers";
 
 function Temperature({ value }: { value: number }) {
     return (

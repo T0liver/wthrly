@@ -1,6 +1,6 @@
 import "../assets/card.css";
 import Icon from "./Icon";
-import { formatNumber, gradToRad } from "../utils/Numbers";
+import { formatNumber, gradToRad } from "../utils/numbers";
 import { CSSProperties } from "preact";
 
 interface CardProps {
