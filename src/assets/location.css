@@ -1,0 +1,14 @@
+.location-container {
+    background-color: #fff;
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 60px 5px 30px;
+	border: 2px dashed #333;
+	border-radius: 15px;
+	color: #333;
+}
+
+.location-name {
+    font-size: 24px;
+	font-weight: 500;
+}
