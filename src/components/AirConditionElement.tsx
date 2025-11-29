@@ -8,7 +8,7 @@ function AirConditionElement({ label, value, unit, iconName }: { label: string; 
                 <Icon name={iconName} size={50} />
                 <div className="air-condition-label">{label}</div>
             </div>
-            <div className="air-condition-value">{value} {unit}</div>
+            <div className="air-condition-value">{value?.toFixed(1)} {unit}</div>
         </div>
     );
 }
