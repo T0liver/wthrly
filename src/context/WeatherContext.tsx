@@ -37,6 +37,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 			const { current, forecast } = await getWeatherDataAndForecast(city);
 			setWeatherData(current);
 			setForecastData(forecast);
+			localStorage.setItem("lastCity", city);
 		} catch (err) {
 			setError("Failed to fetch weather data. Please check the city name.");
 			setTimeout(() => setError(null), 5000);
@@ -46,7 +47,8 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	useEffect(() => {
-		fetchWeatherData("London");
+		const lastCity = localStorage.getItem("lastCity") || "Bugyi";
+		fetchWeatherData(lastCity);
 	}, [fetchWeatherData]);
 
 	return (
