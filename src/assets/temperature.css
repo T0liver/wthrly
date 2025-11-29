@@ -13,15 +13,9 @@
     font-weight: 400;
 }
 
-.radCtemp-value {
-    font-size: 24pt;
-    font-weight: 400;
-}
-
-.radCtemp-unit {
-    font-size: 18pt;
-    font-weight: 400;
-    padding-left: 10px;
+.radC {
+	text-align: center;
+	margin-bottom: 8px;
 }
 
 .temperature-description {
