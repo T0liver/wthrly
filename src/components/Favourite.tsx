@@ -1,6 +1,7 @@
 import useFavorites from "../utils/useFavourites";
 import { useWeather } from "../context/WeatherContext";
 import Icon from "./Icon";
+import "../assets/favourite.css";
 
 function Favourite() {
 	const { weatherData } = useWeather();
