@@ -13,6 +13,7 @@ import SideBar from "./components/SideBar";
 import { WeatherProvider, useWeather } from "./context/WeatherContext";
 import SunRiseSet from "./components/SunRiseSet";
 import WindDirection from "./components/WinDirection";
+import Clock from "./components/Clock";
 
 function WeatherApp() {
 	const { weatherData, isLoading, error } = useWeather();
@@ -28,6 +29,7 @@ function WeatherApp() {
 			<SideBar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
 			<Header />
 			<Location name={weatherData.name} />
+			<Clock />
 			<Temperature
 				value={weatherData.temp}
 				icon={weatherData?.weather_icon}
