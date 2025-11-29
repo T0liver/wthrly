@@ -12,6 +12,7 @@ import Hamburger from "./components/Hamburger";
 import SideBar from "./components/SideBar";
 import { WeatherProvider, useWeather } from "./context/WeatherContext";
 import SunRiseSet from "./components/SunRiseSet";
+import WindDirection from "./components/WinDirection";
 
 function WeatherApp() {
 	const { weatherData, isLoading, error } = useWeather();
@@ -39,6 +40,7 @@ function WeatherApp() {
 					wind={weatherData.wind_speed}
 					clouds={weatherData.clouds_all}
 					humidity={weatherData.humidity}
+					direction={50}
 				/>
 			</div>
 			<div className="infos-wrapper">
