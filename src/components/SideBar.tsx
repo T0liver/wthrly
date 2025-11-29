@@ -2,6 +2,7 @@ import { useState, useEffect } from "preact/hooks";
 import "../assets/sidebar.css";
 import City from "./City";
 import { useWeather } from "../context/WeatherContext";
+import SideCard from "./SideCard";
 
 interface SideBarProps {
     isOpen: boolean;
@@ -32,13 +33,18 @@ export default function SideBar({ isOpen, onClose }: SideBarProps) {
                 <button className="close-btn" onClick={onClose}>&times;</button>
             </div>
             <div className="sidebar-content">
-                <h3>Fvrt Ctys</h3>
-                <div className="city-list">
-                    {favorites.length > 0 ? (
-                        favorites.map((city) => <City key={city} name={city} onClick={handleCitySelect} />)
-                    ) : (
-                        <p>No favorite cities yet.</p>
-                    )}
+                <div>
+                    <h3>Fvrt Ctys</h3>
+                    <div className="city-list">
+                        {favorites.length > 0 ? (
+                            favorites.map((city) => <City key={city} name={city} onClick={handleCitySelect} />)
+                        ) : (
+                            <p>No favorite cities yet.</p>
+                        )}
+                    </div>
+                </div>
+                <div className="sidebar-card-wrapper">
+                    <SideCard />
                 </div>
             </div>
         </div>

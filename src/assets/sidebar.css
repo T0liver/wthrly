@@ -36,5 +36,14 @@
 }
 
 .sidebar-content {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.sidebar-card-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
 }
