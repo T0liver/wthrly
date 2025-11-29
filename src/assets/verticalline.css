@@ -1,0 +1,22 @@
+.vertical-line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 50%;
+    margin: 0 30px;
+}

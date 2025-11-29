@@ -13,6 +13,7 @@ import SideBar from "./components/SideBar";
 import { WeatherProvider, useWeather } from "./context/WeatherContext";
 import SunRiseSet from "./components/SunRiseSet";
 import Clock from "./components/Clock";
+import VerticalLine from "./components/VerticalLine";
 
 function WeatherApp() {
 	const { weatherData, isLoading, error } = useWeather();
@@ -47,6 +48,7 @@ function WeatherApp() {
 			<div className="infos-wrapper">
 				<SunRiseSet sunrise={weatherData.sunrise} sunset={weatherData.sunset} />
 			</div>
+			<VerticalLine />
 			<Footer />
             {error && <div className="error-popup">{error}</div>}
 		</div>
