@@ -12,7 +12,6 @@ import Hamburger from "./components/Hamburger";
 import SideBar from "./components/SideBar";
 import { WeatherProvider, useWeather } from "./context/WeatherContext";
 import SunRiseSet from "./components/SunRiseSet";
-import WindDirection from "./components/WinDirection";
 import Clock from "./components/Clock";
 
 function WeatherApp() {
