@@ -1,4 +1,4 @@
-import apiClient from './apiClient';
+import { apiClient, sunriseApiClient } from './apiClient';
 import { getCoordinates } from './geocodingService';
 import { calculateWindChill } from '../utils/windChill';
 
@@ -25,6 +25,17 @@ interface MetAPIData {
   };
 }
 
+interface SunriseAPIData {
+  properties: {
+    sunrise: {
+      time: string;
+    };
+    sunset: {
+      time: string;
+    };
+  };
+}
+
 export interface UIData {
   name: string;
   temp: number;
@@ -34,6 +45,8 @@ export interface UIData {
   clouds_all: number;
   weather_icon: string;
   weather_description: string;
+  sunrise: string;
+  sunset: string;
 }
 
 export interface ForecastData {
@@ -56,6 +69,12 @@ export const getWeatherDataAndForecast = async (
     })
     .json<MetAPIData>();
 
+  const sunriseData = await sunriseApiClient
+    .get(
+      `?lat=${coords.lat}&lon=${coords.lon}`
+    )
+    .json<SunriseAPIData>();
+
   const currentData = weatherData.properties.timeseries[0].data;
   const weather_icon =
     currentData.next_1_hours?.summary.symbol_code ?? 'clearsky_day';
@@ -72,6 +91,8 @@ export const getWeatherDataAndForecast = async (
     clouds_all: currentData.instant.details.cloud_area_fraction,
     weather_icon,
     weather_description: weather_icon.replace(/_/g, ' '),
+    sunrise: sunriseData.properties.sunrise.time,
+    sunset: sunriseData.properties.sunset.time,
   };
 
   const dailyForecasts = new Map<

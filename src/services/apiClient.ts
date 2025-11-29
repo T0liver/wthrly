@@ -7,4 +7,11 @@ const apiClient = ky.create({
   },
 });
 
-export default apiClient;
+const sunriseApiClient = ky.create({
+  prefixUrl: 'https://api.met.no/weatherapi/sunrise/3.0/sun',
+  headers: {
+    'User-Agent': 'wtrly/1.0 https://github.com/T0liver/wtrly',
+  },
+});
+
+export { apiClient, sunriseApiClient };

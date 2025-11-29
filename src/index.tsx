@@ -42,7 +42,7 @@ function WeatherApp() {
 				/>
 			</div>
 			<div className="infos-wrapper">
-				<SunRiseSet />
+				<SunRiseSet sunrise={weatherData.sunrise} sunset={weatherData.sunset} />
 			</div>
 			<Footer />
             {error && <div className="error-popup">{error}</div>}
