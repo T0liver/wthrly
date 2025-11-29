@@ -10,7 +10,7 @@ import { celciusToFahrenheit, mpsToMph } from "./numbers";
  */
 export const calculateWindChill = (temperature: number, windSpeed: number): number => {
   if (windSpeed < 4.8) {
-    return temperature - 1;
+    return Math.round(temperature);
   }
 
   /**
