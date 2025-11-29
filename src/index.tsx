@@ -11,6 +11,7 @@ import Loading from "./components/Loading";
 import Hamburger from "./components/Hamburger";
 import SideBar from "./components/SideBar";
 import { WeatherProvider, useWeather } from "./context/WeatherContext";
+import SunRiseSet from "./components/SunRiseSet";
 
 function WeatherApp() {
 	const { weatherData, isLoading, error } = useWeather();
@@ -32,13 +33,16 @@ function WeatherApp() {
 				description={weatherData?.weather_description}
 			/>
 			<DaysForecast />
-			<div className="air-conditions-wrapper">
+			<div className="infos-wrapper">
 				<AirConditions
 					realFeel={weatherData.feels_like}
 					wind={weatherData.wind_speed}
 					clouds={weatherData.clouds_all}
 					humidity={weatherData.humidity}
 				/>
+			</div>
+			<div className="infos-wrapper">
+				<SunRiseSet />
 			</div>
 			<Footer />
             {error && <div className="error-popup">{error}</div>}

@@ -1,0 +1,20 @@
+.sun-rise-set-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20pt;
+    font-weight: 300;
+}
+
+.sun-rise-set-header {
+    font-size: 24pt;
+    padding-bottom: 20px;
+}
+
+.sun-rise-set-item {
+    display: flex;
+    align-items: center;
+}
+.sun-rise-set-label {
+    padding-left: 15px;
+}

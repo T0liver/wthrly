@@ -16,7 +16,7 @@ body {
     gap: 20px;
 }
 
-.air-conditions-wrapper {
+.infos-wrapper {
     width: 100%;
     @media screen and (max-width: 500px) {
         padding-left: 5vw;
