@@ -5,5 +5,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    flex-wrap: wrap-reverse;
+    @media screen and (min-width: 405px) {
+        gap: 30px;
+    }
+}
+
+.app-title {
+    @media screen and (max-width: 405px) {
+        margin-top: 0;
+    }
 }
