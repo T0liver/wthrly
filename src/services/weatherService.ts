@@ -1,5 +1,6 @@
 import apiClient from './apiClient';
 import { getCoordinates } from './geocodingService';
+import { calculateWindChill } from '../utils/windChill';
 
 interface MetAPIData {
   properties: {
@@ -27,6 +28,7 @@ interface MetAPIData {
 export interface UIData {
   name: string;
   temp: number;
+  feels_like: number;
   humidity: number;
   wind_speed: number;
   clouds_all: number;
@@ -50,9 +52,13 @@ export const getWeatherData = async (city: string): Promise<UIData> => {
   const weather_icon =
     currentData.next_1_hours?.summary.symbol_code ?? 'clearsky_day';
 
+  const temp = currentData.instant.details.air_temperature;
+  const wind_speed = currentData.instant.details.wind_speed;
+
   return {
     name: coords.name,
-    temp: currentData.instant.details.air_temperature,
+    temp,
+    feels_like: calculateWindChill(temp, wind_speed),
     humidity: currentData.instant.details.relative_humidity,
     wind_speed: currentData.instant.details.wind_speed,
     clouds_all: currentData.instant.details.cloud_area_fraction,

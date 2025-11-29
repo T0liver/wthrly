@@ -34,3 +34,9 @@ function celsiusToReaumur(celsius: number, fractionDigits = 3) {
 }
 
 export { celsiusToReaumur };
+
+function mpsToMph(mps: number, fractionDigits = 3) {
+	return Number((mps * 2.236936).toFixed(fractionDigits));
+}
+
+export { mpsToMph };
