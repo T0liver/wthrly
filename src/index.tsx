@@ -40,7 +40,7 @@ function WeatherApp() {
 					wind={weatherData.wind_speed}
 					clouds={weatherData.clouds_all}
 					humidity={weatherData.humidity}
-					direction={50}
+					direction={weatherData.wind_from_direction}
 				/>
 			</div>
 			<div className="infos-wrapper">

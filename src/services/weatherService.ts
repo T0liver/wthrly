@@ -13,6 +13,7 @@ interface MetAPIData {
             relative_humidity: number;
             wind_speed: number;
             cloud_area_fraction: number;
+            wind_from_direction: number;
           };
         };
         next_1_hours?: {
@@ -42,6 +43,7 @@ export interface UIData {
   feels_like: number;
   humidity: number;
   wind_speed: number;
+  wind_from_direction: number;
   clouds_all: number;
   weather_icon: string;
   weather_description: string;
@@ -88,6 +90,7 @@ export const getWeatherDataAndForecast = async (
     feels_like: calculateWindChill(temp, wind_speed),
     humidity: currentData.instant.details.relative_humidity,
     wind_speed: currentData.instant.details.wind_speed,
+    wind_from_direction: currentData.instant.details.wind_from_direction,
     clouds_all: currentData.instant.details.cloud_area_fraction,
     weather_icon,
     weather_description: weather_icon.replace(/_/g, ' '),
