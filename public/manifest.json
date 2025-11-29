@@ -1,0 +1,29 @@
+{
+    "name": "Wthrly -  a simple but nice weather app",
+    "short_name": "Wthrly",
+    "start_url": "./?mode=pwa",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "icons/icons8-clouds-and-sun.png",
+            "sizes": "500x500",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot-desktop.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Wthrly Desktop Screenshot"
+        },
+        {
+            "src": "screenshot-mobile.png",
+            "sizes": "1696x3486",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Wthrly Mobile Screenshot"
+        }
+    ]
+}
