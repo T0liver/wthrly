@@ -18,6 +18,7 @@ interface WeatherContextType {
 	isLoading: boolean;
 	error: string | null;
 	fetchWeatherData: (city: string) => Promise<void>;
+	setCity: (city: string) => void;
 }
 
 const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
@@ -46,6 +47,10 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 		}
 	}, []);
 
+	const setCity = (city: string) => {
+		fetchWeatherData(city);
+	};
+
 	useEffect(() => {
 		const lastCity = localStorage.getItem("lastCity") || "Bugyi";
 		fetchWeatherData(lastCity);
@@ -59,6 +64,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 				isLoading,
 				error,
 				fetchWeatherData,
+				setCity,
 			}}
 		>
 			{children}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
 import "../assets/sidebar.css";
 import City from "./City";
+import { useWeather } from "../context/WeatherContext";
 
 interface SideBarProps {
     isOpen: boolean;
@@ -9,6 +10,7 @@ interface SideBarProps {
 
 export default function SideBar({ isOpen, onClose }: SideBarProps) {
     const [favorites, setFavorites] = useState<string[]>([]);
+    const { setCity } = useWeather();
 
     useEffect(() => {
         if (isOpen) {
@@ -19,6 +21,11 @@ export default function SideBar({ isOpen, onClose }: SideBarProps) {
         }
     }, [isOpen]);
 
+    const handleCitySelect = (cityName: string) => {
+        setCity(cityName);
+        onClose();
+    };
+
     return (
         <div className={`sidebar ${isOpen ? "open" : ""}`}>
             <div className="sidebar-header">
@@ -28,7 +35,7 @@ export default function SideBar({ isOpen, onClose }: SideBarProps) {
                 <h3>Fvrt Ctys</h3>
                 <div className="city-list">
                     {favorites.length > 0 ? (
-                        favorites.map((city) => <City key={city} name={city} />)
+                        favorites.map((city) => <City key={city} name={city} onClick={handleCitySelect} />)
                     ) : (
                         <p>No favorite cities yet.</p>
                     )}
