@@ -26,7 +26,11 @@ function WeatherApp() {
 			<SideBar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
 			<Header />
 			<Location name={weatherData.name} />
-			<Temperature value={weatherData.temp} icon={weatherData?.weather_icon} />
+			<Temperature
+				value={weatherData.temp}
+				icon={weatherData?.weather_icon}
+				description={weatherData?.weather_description}
+			/>
 			<DaysForecast />
 			<div className="air-conditions-wrapper">
 				<AirConditions

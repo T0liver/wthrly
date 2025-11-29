@@ -23,3 +23,10 @@
     font-weight: 400;
     padding-left: 10px;
 }
+
+.temperature-description {
+    font-size: 16pt;
+    font-weight: 300;
+    margin-top: 10px;
+    text-align: center;
+}

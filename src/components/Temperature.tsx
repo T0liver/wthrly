@@ -2,7 +2,7 @@ import "../assets/temperature.css";
 import { gradToRad } from "../utils/numbers";
 import Icon from "./Icon";
 
-function Temperature({ value, icon }: { value: number; icon: string }) {
+function Temperature({ value, icon, description }: { value: number; icon: string; description: string }) {
     return (
         <div className="temperature-container">
             <div className="temperature-celsius">
@@ -14,6 +14,9 @@ function Temperature({ value, icon }: { value: number; icon: string }) {
                 <span className="radCtemp-unit">radC</span>
             </div>
             <Icon wIcon={icon} size={80} />
+            <div className="temperature-label">
+                <span className="temperature-description">{description}</span>
+            </div>
         </div>
     );
 }
