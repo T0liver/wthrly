@@ -1,8 +1,9 @@
 import "../assets/card.css";
 import Icon from "./Icon";
-import { formatNumber, gradToRad } from "../utils/numbers";
+import { formatNumber } from "../utils/numbers";
 import { CSSProperties } from "preact";
 import CelsiusRadian from "./CelsiusRadian";
+import Celsius from "./Celsius";
 
 interface CardProps {
 	day?: string;
@@ -24,7 +25,7 @@ export default function Card({
 	return (
 		<div className={`card ${className || ""}`} style={style}>
 			<div className="day">{day}</div>
-			<div className="temp">{formatNumber(tempC, locale, 1)} °C</div>
+			<Celsius tempC={tempC} size="26pt" weight={400} fractionDigits={1} />
 			<CelsiusRadian tempC={tempC}  />
 			<div className="spacer" />
 			<div aria-hidden><Icon name={icon} /></div>

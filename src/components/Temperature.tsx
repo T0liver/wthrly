@@ -1,14 +1,12 @@
 import "../assets/temperature.css";
+import Celsius from "./Celsius";
 import CelsiusRadian from "./CelsiusRadian";
 import Icon from "./Icon";
 
 function Temperature({ value, icon, description }: { value: number; icon: string; description: string }) {
     return (
         <div className="temperature-container">
-            <div className="temperature-celsius">
-                <span className="temperature-value">{value}</span>
-                <span className="temperature-unit">°C</span>
-            </div>
+            <Celsius tempC={value} size="70pt" weight={500} />
             <CelsiusRadian tempC={value} fractionDigits={6} size="26pt" weight={400} />
             <Icon wIcon={icon} size={80} />
             <div className="temperature-label">

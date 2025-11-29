@@ -3,14 +3,8 @@
     justify-items: center;
 }
 
-.temperature-value {
-    font-size: 70pt;
-    font-weight: 500;
-}
-
 .temperature-unit {
-    font-size: 36pt;
-    font-weight: 400;
+    padding-left: 5px;
 }
 
 .radC {
