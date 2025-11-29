@@ -1,4 +1,6 @@
 @import url("https://fonts.bunny.net/css2?family=Caveat+Brush:wght@400;700&display=swap");
+@import url("./hamburger.css");
+@import url("./sidebar.css");
 
 body {
     font-family: 'Caveat Brush', cursive;
