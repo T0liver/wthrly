@@ -1,9 +1,9 @@
 import ky from 'ky';
 
 const apiClient = ky.create({
-  prefixUrl: 'https://api.openweathermap.org/data/2.5',
-  searchParams: {
-    appid: import.meta.env.VITE_OPENWEATHER_KEY,
+  prefixUrl: 'https://api.met.no/weatherapi/locationforecast/2.0',
+  headers: {
+    'User-Agent': 'wtrly/1.0 https://github.com/T0liver/wtrly',
   },
 });
 
