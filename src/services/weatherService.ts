@@ -36,7 +36,15 @@ export interface UIData {
   weather_description: string;
 }
 
-export const getWeatherData = async (city: string): Promise<UIData> => {
+export interface ForecastData {
+  dt: number;
+  temp: number;
+  icon: string;
+}
+
+export const getWeatherDataAndForecast = async (
+  city: string
+): Promise<{ current: UIData; forecast: ForecastData[] }> => {
   const coords = await getCoordinates(city);
 
   const weatherData = await apiClient
@@ -55,7 +63,7 @@ export const getWeatherData = async (city: string): Promise<UIData> => {
   const temp = currentData.instant.details.air_temperature;
   const wind_speed = currentData.instant.details.wind_speed;
 
-  return {
+  const current: UIData = {
     name: coords.name,
     temp,
     feels_like: calculateWindChill(temp, wind_speed),
@@ -65,74 +73,50 @@ export const getWeatherData = async (city: string): Promise<UIData> => {
     weather_icon,
     weather_description: weather_icon.replace(/_/g, ' '),
   };
-};
-
-export interface ForecastData {
-  list: {
-    dt: number;
-    main: {
-      temp: number;
-    };
-    weather: {
-      icon: string;
-    }[];
-  }[];
-}
-
-export const getForecast = async (city: string): Promise<ForecastData> => {
-  const coords = await getCoordinates(city);
-
-  const forecastData = await apiClient
-    .get('compact', {
-      searchParams: {
-        lat: coords.lat,
-        lon: coords.lon,
-      },
-    })
-    .json<MetAPIData>();
 
   const dailyForecasts = new Map<
     string,
     { temps: number[]; icons: string[] }
   >();
 
-  forecastData.properties.timeseries.forEach(item => {
-    const date = item.time.split('T')[0];
-    if (!dailyForecasts.has(date)) {
-      dailyForecasts.set(date, { temps: [], icons: [] });
+  weatherData.properties.timeseries.forEach(item => {
+    const date = new Date(item.time);
+    const today = new Date();
+    if (date.getDate() === today.getDate()) return;
+
+    const dateStr = item.time.split('T')[0];
+    if (!dailyForecasts.has(dateStr)) {
+      dailyForecasts.set(dateStr, { temps: [], icons: [] });
     }
     dailyForecasts
-      .get(date)!
+      .get(dateStr)!
       .temps.push(item.data.instant.details.air_temperature);
     if (item.data.next_1_hours) {
       dailyForecasts
-        .get(date)!
+        .get(dateStr)!
         .icons.push(item.data.next_1_hours.summary.symbol_code);
     }
   });
 
-  const list = Array.from(dailyForecasts.entries()).map(([date, data]) => {
-    const avgTemp = data.temps.reduce((a, b) => a + b, 0) / data.temps.length;
-    const mostCommonIcon = data.icons
-      .sort(
-        (a, b) =>
-          data.icons.filter(v => v === a).length -
-          data.icons.filter(v => v === b).length
-      )
-      .pop();
+  const forecast = Array.from(dailyForecasts.entries())
+    .slice(0, 5)
+    .map(([date, data]) => {
+      const avgTemp =
+        data.temps.reduce((a, b) => a + b, 0) / data.temps.length;
+      const mostCommonIcon = data.icons
+        .sort(
+          (a, b) =>
+            data.icons.filter(v => v === a).length -
+            data.icons.filter(v => v === b).length
+        )
+        .pop();
 
-    return {
-      dt: new Date(date).getTime() / 1000,
-      main: {
+      return {
+        dt: new Date(date).getTime() / 1000,
         temp: avgTemp,
-      },
-      weather: [
-        {
-          icon: mostCommonIcon ?? 'clearsky_day',
-        },
-      ],
-    };
-  });
+        icon: mostCommonIcon ?? 'clearsky_day',
+      };
+    });
 
-  return { list };
+  return { current, forecast };
 };
