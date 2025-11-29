@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import "../assets/location.css";
 import Icon from "./Icon";
 import { useWeather } from "../context/WeatherContext";
+import Favourite from "./Favourite";
 
 function Location({ name: initialName }: { name?: string }) {
 	const [name, setName] = useState(initialName);
@@ -37,6 +38,7 @@ function Location({ name: initialName }: { name?: string }) {
 				onKeyDown={handleKeyDown}
 				placeholder="search location"
 			/>
+			<Favourite />
 		</div>
 	);
 }
