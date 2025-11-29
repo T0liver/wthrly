@@ -1,15 +1,24 @@
 import "../assets/daysforecast.css";
+import { useWeather } from "../context/WeatherContext";
+import { getDayName } from "../utils/dayName";
+import { getWeatherIcon } from "../utils/weatherIcon";
 import Card from "./Card";
 
 function DaysForecast() {
-    return (
-        <div className="days-forecast">
-            <Card day="Tmrrw" tempC={9.6}  />
-            <Card day="Wndsdy" tempC={7.1} icon="rain"  />
-            <Card day="Frdy" tempC={12.9} icon="sun"  />
-            <Card day="Strdy" tempC={5.6} icon="snow-storm"  />
-        </div>
-    );
+	const { forecastData } = useWeather();
+
+	return (
+		<div className="days-forecast">
+			{forecastData?.map(day => (
+				<Card
+					key={day.dt}
+					day={getDayName(new Date(day.dt * 1000))}
+					tempC={day.temp}
+					icon={getWeatherIcon(day.icon)}
+				/>
+			))}
+		</div>
+	);
 }
 
 export default DaysForecast;
