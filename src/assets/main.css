@@ -26,3 +26,8 @@ body {
     }
     box-sizing: border-box;
 }
+
+.details-header {
+    font-size: 24pt;
+    padding-bottom: 20px;
+}
