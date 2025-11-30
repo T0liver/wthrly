@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import ky from 'ky';
 
 /**
@@ -60,4 +61,10 @@ const sunriseApiClient = ky.create({
   },
 });
 
-export { apiClient, sunriseApiClient };
+const baseUrl = import.meta.env.DEV ? '/nominatim' : 'https://nominatim.openstreetmap.org';
+
+const geocodingApiClient = ky.create({
+  prefixUrl: baseUrl,
+});
+
+export { apiClient, sunriseApiClient, geocodingApiClient };
