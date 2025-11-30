@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { JSX } from "preact";
 import "../assets/location.css";
 import Icon from "./Icon";
 import { useWeather } from "../context/WeatherContext";
@@ -50,7 +51,7 @@ function Location({ name: initialName }: { name?: string }) {
 		}
 	};
 
-	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.key === "Enter") {
 			handleSearch();
 			inputRef.current?.blur();
