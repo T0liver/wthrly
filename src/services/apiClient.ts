@@ -61,6 +61,41 @@ const sunriseApiClient = ky.create({
   },
 });
 
+/**
+ * @component HTTP client configured for OpenStreetMap Nominatim Geocoding API.
+ * @props
+ * prefixUrl: string (required) — base API URL. Uses a local dev proxy when running in DEV mode (`/nominatim`) and
+ * `https://nominatim.openstreetmap.org` in production.
+ * headers: Record<string,string> (optional) — no default headers are set here because requests may be proxied in
+ * development; if you call the public Nominatim service directly please include a proper `User-Agent` or `email` per
+ * Nominatim usage policy.
+ * @example
+ * import { geocodingApiClient } from './services/apiClient';
+ * // geocodingApiClient.get('search?format=json&q=Oslo')
+ *
+ * @behavior
+ * - Reuses a single ky instance for connection pooling.
+ * - Expects callers to include the appropriate query parameters (e.g. `q`, `format=json`, `limit`).
+ * - Returns whatever the endpoint returns (typically JSON for `format=json` requests); callers should parse JSON.
+ *
+ * @edgecases
+ * - Rate limiting / courtesy: the public Nominatim service is rate-limited and requires a proper `User-Agent` or
+ * `email` identifying the application; failing to provide one or sending too many requests may result in HTTP 429.
+ * - Missing query params: API returns 4xx; validate inputs before requesting.
+ * - Proxying in DEV: when `import.meta.env.DEV` is true the client points to `/nominatim` — ensure the dev proxy is
+ * configured to forward requests to the real Nominatim server.
+ * - Network errors: ky throws; callers should catch and retry/backoff as needed.
+ *
+ * @performance Reuse the exported instance across the app; do not recreate per render.
+ *
+ * @tests
+ * - Unit: mock ky to assert `prefixUrl` is set to the expected base depending on env.
+ * - Unit: simulate 4xx/5xx responses to assert caller error handling and retry logic.
+ * - Integration: hit the proxied endpoint in a test environment to ensure DEV proxying works.
+ *
+ * @related Uses: components that perform forward/reverse geocoding (e.g. `Location.tsx`) — callers should adapt query
+ * parameters and parse the returned shape.
+ */
 const baseUrl = import.meta.env.DEV ? '/nominatim' : 'https://nominatim.openstreetmap.org';
 
 const geocodingApiClient = ky.create({
