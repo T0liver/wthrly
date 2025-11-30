@@ -1,4 +1,4 @@
-import { celciusToFahrenheit, mpsToMph } from "./numbers";
+import { celciusToFahrenheit, fahrenheitToCelsius, mpsToMph } from "./numbers";
 
 /**
  * Calculates the wind chill factor based on the Steadman formula.
@@ -65,5 +65,5 @@ export const calculateWindChill = (temperature: number, windSpeed: number): numb
     (35.75 * windSfcPowwed) +
     (0.4275 * tempF * windSfcPowwed);
 
-  return Math.round(windChill);
+  return Math.round(fahrenheitToCelsius(windChill));
 };

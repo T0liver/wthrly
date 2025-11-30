@@ -69,6 +69,41 @@ function celciusToFahrenheit(celsius: number, fractionDigits = 3) {
 export { celciusToFahrenheit };
 
 /**
+ * Convert Fahrenheit to Celsius.
+ *
+ * @props
+ * fahrenheit: number (required) — N/A — temperature in degrees Fahrenheit.
+ * fractionDigits: number (optional) — 3 — decimal places in result.
+ *
+ * @example
+ * const c = fahrenheitToCelsius(32); // 0.000
+ *
+ * @behavior
+ * - Pure numeric conversion, no I/O.
+ * - Applies standard formula (F - 32) / 1.8.
+ *
+ * @edgecases
+ * - NaN or non-finite input returns NaN.
+ * - Rounding may hide tiny floating errors.
+ *
+ * @performance
+ * Constant-time arithmetic; negligible cost.
+ *
+ * @tests
+ * - 32°F -> 0°C
+ * - 212°F -> 100°C
+ * - fractionDigits changes precision
+ *
+ * @related
+ * - celsiusToKelvin, celsiusToReaumur
+ */
+function fahrenheitToCelsius(fahrenheit: number, fractionDigits = 3) {
+    return Number(((fahrenheit - 32) / 1.8).toFixed(fractionDigits));
+}
+
+export { fahrenheitToCelsius };
+
+/**
  * Convert Celsius to Kelvin.
  *
  * @props
