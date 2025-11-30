@@ -66,7 +66,40 @@ const iconMap: { [key: string]: string } = {
     "tornado": "tornado",
     "icy": "icy",
 };
-
+/**
+ * @component Return a normalized icon key for a weather condition code.
+ * @props
+ * iconCode: string (required) — "" — Weather code from API, should be lowercase.
+ * @example
+ * import React from 'react';
+ * import { getWeatherIcon } from './utils/weatherIcon';
+ *
+ * const WeatherIconExample: React.FC<{ code: string }> = ({ code }) => {
+ *   const iconKey = getWeatherIcon(code);
+ *   return <span role="img" aria-label={iconKey}>{iconKey}</span>;
+ * };
+ *
+ * export default function App() {
+ *   return <WeatherIconExample code="lightrain" />;
+ * }
+ * @behavior
+ * - Maps known API codes to local icon keys synchronously.
+ * - Returns fallback "sun" when code is not recognized.
+ * - Pure function: no I/O or side effects.
+ * - Safe for SSR and client render paths.
+ * @edgecases
+ * - null or undefined -> treated as unknown, returns "sun".
+ * - Non-string inputs -> coerced or mismatched, returns fallback.
+ * - Uppercase or spaced codes -> mapping may fail, returns fallback.
+ * @performance
+ * - Constant-time O(1) lookup; no memoization required.
+ * @tests
+ * - unit: known code returns expected icon key.
+ * - unit: unknown code returns "sun".
+ * - unit: null/undefined returns "sun".
+ * - a11y: rendered element includes role and aria-label.
+ * @related Icon component, weatherService
+ */
 export const getWeatherIcon = (iconCode: string) => {
     return iconMap[iconCode] || "sun";
 };
