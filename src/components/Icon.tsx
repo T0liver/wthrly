@@ -46,7 +46,7 @@ function Icon({
 	name = wIcon ? wGIcon : name ? name : "sun";
 	return (
 		<img
-			src={`/icons/icons8-${name}.png`}
+			src={`icons/icons8-${name}.png`}
 			alt="icon"
 			width={size}
 			height={size}
