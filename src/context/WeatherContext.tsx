@@ -45,7 +45,7 @@ const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
  * @edgecases
  * - Invalid city string -> sets error and clears after 5s.
  * - Network failure -> sets error, retains previous data if present.
- * - localStorage unavailable -> falls back to default city "Bugyi".
+ * - localStorage unavailable -> falls back to default city "Budapest".
  * @performance
  * - fetchWeatherData is memoized with useCallback; memoize provider value to reduce renders.
  * @tests
@@ -85,7 +85,7 @@ export const WeatherProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	useEffect(() => {
-		const lastCity = localStorage.getItem("lastCity") || "Bugyi";
+		const lastCity = localStorage.getItem("lastCity") || "Budapest";
 		fetchWeatherData(lastCity);
 	}, [fetchWeatherData]);
 
