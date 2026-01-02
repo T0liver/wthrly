@@ -17,6 +17,15 @@ export default defineConfig({
 				},
 				rewrite: (path) => path.replace(/^\/nominatim/, ''),
 			},
+			'/weatherapi': {
+				target: 'https://api.met.no/weatherapi',
+				changeOrigin: true,
+				secure: true,
+				headers: {
+					'User-Agent': 'wtrly/1.0 https://github.com/T0liver/wtrly',
+				},
+				rewrite: (path) => path.replace(/^\/weatherapi/, ''),
+			},
 		},
 	},
 });

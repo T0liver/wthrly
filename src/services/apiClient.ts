@@ -24,11 +24,10 @@ import ky from 'ky';
  * - Accessibility: n/a (non-UI module).
  * @related Uses: ./weatherService.ts — higher-level API wrappers.
  */
+const weatherBaseUrl = import.meta.env.DEV ? '/weatherapi' : 'https://api.met.no/weatherapi';
+
 const apiClient = ky.create({
-  prefixUrl: 'https://api.met.no/weatherapi/locationforecast/2.0',
-  headers: {
-    'User-Agent': 'wtrly/1.0 https://github.com/T0liver/wtrly',
-  },
+  prefixUrl: `${weatherBaseUrl}/locationforecast/2.0`,
 });
 
 /**
@@ -55,10 +54,7 @@ const apiClient = ky.create({
  * @related Uses: ./SunRiseSet.tsx — UI component consuming sunrise data.
  */
 const sunriseApiClient = ky.create({
-  prefixUrl: 'https://api.met.no/weatherapi/sunrise/3.0/sun',
-  headers: {
-    'User-Agent': 'wtrly/1.0 https://github.com/T0liver/wtrly',
-  },
+  prefixUrl: `${weatherBaseUrl}/sunrise/3.0/sun`,
 });
 
 /**
