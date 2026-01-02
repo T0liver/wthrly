@@ -55,7 +55,26 @@ function WeatherApp() {
 	const { weatherData, isLoading, error } = useWeather();
 	const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-	if (isLoading || !weatherData) {
+	if (isLoading) {
+		return <Loading />;
+	}
+
+	if (error && !weatherData) {
+		return (
+			<div className="app-container">
+				<Hamburger onClick={() => setSidebarOpen(true)} />
+				<SideBar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
+				<Header />
+				<Location />
+				<div className="error-popup" style={{ position: "relative", margin: "20px auto", left: "auto", transform: "none" }}>
+					{error}
+				</div>
+				<Footer />
+			</div>
+		);
+	}
+
+	if (!weatherData) {
 		return <Loading />;
 	}
 

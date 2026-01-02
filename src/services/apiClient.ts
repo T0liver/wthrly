@@ -100,6 +100,9 @@ const baseUrl = import.meta.env.DEV ? '/nominatim' : 'https://nominatim.openstre
 
 const geocodingApiClient = ky.create({
   prefixUrl: baseUrl,
+  headers: {
+    'User-Agent': 'wtrly/1.0 https://github.com/T0liver/wtrly',
+  },
 });
 
 export { apiClient, sunriseApiClient, geocodingApiClient };
